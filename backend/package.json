@@ -1,0 +1,41 @@
+{
+  "name": "inventory-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Inventory Management System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "db:reset": "node dbManager.js reset",
+    "db:check": "node dbManager.js check",
+    "db:seed": "node dbManager.js seed",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "inventory",
+    "management",
+    "api",
+    "nodejs",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "json2csv": "^5.0.7",
+    "jsonwebtoken": "^9.0.2",
+    "jspdf": "^3.0.1",
+    "jspdf-autotable": "^5.0.2",
+    "mongoose": "^8.0.3",
+    "multer": "^1.4.5-lts.1",
+    "pdfkit": "^0.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
