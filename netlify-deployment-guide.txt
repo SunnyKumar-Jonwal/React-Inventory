@@ -1,0 +1,28 @@
+# Frontend Deployment Instructions for Netlify
+
+## Option A: Drag & Drop (Easiest)
+1. Go to Netlify.com and login
+2. Click "Deploy" → "Drag and drop your site folder here"
+3. Drag the entire `dist` folder to the deployment area
+4. Your site will be live in minutes!
+
+## Option B: Git Integration (Recommended for updates)
+1. Go to Netlify.com → "New site from Git"
+2. Connect to GitHub and select React-Inventory repository
+3. Set build settings:
+   - Base directory: (leave empty)
+   - Build command: npm run build
+   - Publish directory: dist
+4. Add environment variables:
+   - VITE_API_URL: https://your-render-backend-url.onrender.com/api
+   - VITE_NODE_ENV: production
+
+## After Deployment:
+1. Note your Netlify URL (e.g., https://amazing-app-name.netlify.app)
+2. Update FRONTEND_URL in your Render backend environment variables
+3. Update VITE_API_URL in your Netlify environment variables
+
+## Test Your Live Application:
+- Frontend: Your Netlify URL
+- Backend: Your Render URL + /api/health
+- Login with: admin@inventory.com / Admin@123
