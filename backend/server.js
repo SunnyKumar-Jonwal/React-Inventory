@@ -29,6 +29,32 @@ app.use(express.urlencoded({ extended: true }));
 // Static file serving for uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Inventory Management API Server',
+    status: 'running',
+    version: '1.0.0',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// API root route
+app.get('/api', (req, res) => {
+  res.json({ 
+    message: 'Inventory Management API',
+    status: 'active',
+    version: '1.0.0',
+    endpoints: [
+      '/api/auth',
+      '/api/users', 
+      '/api/products',
+      '/api/sales',
+      '/api/reports'
+    ]
+  });
+});
+
 // Database connection
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/inventory_management', {
 //   useNewUrlParser: true,
