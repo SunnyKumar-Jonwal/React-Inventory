@@ -2,8 +2,8 @@
 NODE_ENV=production
 PORT=5000
 
-# MongoDB Atlas Connection - UPDATED with database name
-MONGODB_URI=mongodb+srv://sunnykumarjonwal:7FRVQhUzkxRzkZaz@cluster0.tyotepw.mongodb.net/inventory-management?retryWrites=true&w=majority&appName=Cluster0
+# MongoDB Atlas Connection - UPDATED for production deployment
+MONGODB_URI=mongodb+srv://sunnykumarjonwal:7FRVQhUzkxRzkZaz@cluster0.tyotepw.mongodb.net/inventory-management?retryWrites=true&w=majority&appName=Cluster0&connectTimeoutMS=30000&socketTimeoutMS=30000
 
 # JWT Secret - NEW SECURE SECRET
 JWT_SECRET=97cb78fcddf3c7e592a34b057351ef8ff5f3c314b61e86fb796662b2cbeeb03de05fcd1a008cea812dee157f658a511b7c903615ad1c438264f93f92d2613aef
