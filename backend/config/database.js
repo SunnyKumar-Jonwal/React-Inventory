@@ -7,8 +7,6 @@ class Database {
   }
 
   async connect() {
-    console.log('🔌 Starting database connection...');
-    
     try {
       // Production: Use MongoDB Atlas
       if (process.env.NODE_ENV === 'production') {
@@ -56,31 +54,21 @@ class Database {
         this.isConnected = true;
       }
       
-      // Setup connection event handlers
-      this.setupEventHandlers();
-      
+      // Handle connection events
+      mongoose.connection.on('error', (err) => {
+        console.error('❌ MongoDB connection error:', err);
+        this.isConnected = false;
+      });
+
+      mongoose.connection.on('disconnected', () => {
+        console.log('📴 MongoDB disconnected');
+        this.isConnected = false;
+      });
+
     } catch (error) {
       console.error('❌ Failed to connect to MongoDB:', error);
       throw error;
     }
-  }
-
-  setupEventHandlers() {
-    // Handle connection events
-    mongoose.connection.on('error', (err) => {
-      console.error('❌ MongoDB connection error:', err);
-      this.isConnected = false;
-    });
-
-    mongoose.connection.on('disconnected', () => {
-      console.log('📴 MongoDB disconnected');
-      this.isConnected = false;
-    });
-
-    mongoose.connection.on('reconnected', () => {
-      console.log('🔄 MongoDB reconnected');
-      this.isConnected = true;
-    });
   }
 
   async disconnect() {
@@ -107,6 +95,4 @@ class Database {
   }
 }
 
-// Export a single instance
-const databaseInstance = new Database();
-module.exports = databaseInstance;
+module.exports = new Database();
